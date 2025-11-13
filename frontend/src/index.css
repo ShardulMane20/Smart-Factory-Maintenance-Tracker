@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* React Big Calendar styles */
+.rbc-calendar {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.rbc-header {
+  padding: 10px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.rbc-today {
+  background-color: #0c4a6e;
+}
+
+.rbc-event {
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+.rbc-event.completed {
+  background-color: #10b981;
+}
+
+.rbc-event.upcoming {
+  background-color: #f59e0b;
+}
+
+.rbc-event.overdue {
+  background-color: #ef4444;
+}
+
+.rbc-event.at-risk {
+  background-color: #f97316;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
