@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Plus, Activity } from 'lucide-react';
 import Sidebar from '../components/common/Sidebar';
 import Topbar from '../components/common/Topbar';
-import Card from '../components/common/Card';
 import Modal from '../components/common/Modal';
 import MachineDetail from '../components/machines/MachineDetail';
 import ReadingsForm from '../components/machines/ReadingsForm';
@@ -39,11 +38,12 @@ const MachineDetailPage = () => {
   const handleAddReading = async (formData) => {
     try {
       await machineAPI.addReading(id, formData);
+      alert('Reading added successfully!');
       setIsReadingModalOpen(false);
       loadMachineData();
     } catch (error) {
       console.error('Error adding reading:', error);
-      alert('Error adding reading');
+      alert('Error adding reading: ' + (error.response?.data?.error || error.message));
     }
   };
 

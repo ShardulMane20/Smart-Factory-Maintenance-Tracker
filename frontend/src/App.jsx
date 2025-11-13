@@ -3,6 +3,7 @@ import useAuthStore from './store/authStore';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Machines from './pages/Machines';
+import MachineDetailPage from './pages/MachineDetailPage';  // ← ADD THIS
 import Calendar from './pages/Calendar';
 import Reports from './pages/Reports';
 import SpareParts from './pages/SpareParts';
@@ -48,6 +49,16 @@ function App() {
           element={
             <ProtectedRoute>
               <Machines />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ← ADD THIS ROUTE */}
+        <Route
+          path="/machines/:id"
+          element={
+            <ProtectedRoute>
+              <MachineDetailPage />
             </ProtectedRoute>
           }
         />

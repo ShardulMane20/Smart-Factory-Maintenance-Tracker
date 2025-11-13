@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Plus } from 'lucide-react';
 import Sidebar from '../components/common/Sidebar';
 import Topbar from '../components/common/Topbar';
-import Card from '../components/common/Card';
 import Modal from '../components/common/Modal';
 import MachineList from '../components/machines/MachineList';
 import MachineForm from '../components/machines/MachineForm';
@@ -27,6 +26,7 @@ const Machines = () => {
       setMachines(response.data);
     } catch (error) {
       console.error('Error loading machines:', error);
+      alert('Error loading machines: ' + (error.response?.data?.error || error.message));
     } finally {
       setLoading(false);
     }
@@ -49,10 +49,11 @@ const Machines = () => {
 
     try {
       await machineAPI.delete(id);
+      alert('Machine deleted successfully!');
       loadMachines();
     } catch (error) {
       console.error('Error deleting machine:', error);
-      alert('Error deleting machine');
+      alert('Error deleting machine: ' + (error.response?.data?.error || error.message));
     }
   };
 
@@ -60,14 +61,16 @@ const Machines = () => {
     try {
       if (selectedMachine) {
         await machineAPI.update(selectedMachine.id, formData);
+        alert('Machine updated successfully!');
       } else {
         await machineAPI.create(formData);
+        alert('Machine added successfully!');
       }
       setIsModalOpen(false);
       loadMachines();
     } catch (error) {
       console.error('Error saving machine:', error);
-      alert('Error saving machine');
+      alert('Error saving machine: ' + (error.response?.data?.error || error.message));
     }
   };
 
@@ -95,7 +98,7 @@ const Machines = () => {
             )}
           </div>
 
-          <Card className="p-6">
+          <div className="bg-dark-800 rounded-lg border border-dark-700 p-6">
             {loading ? (
               <div className="flex items-center justify-center py-12">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500"></div>
@@ -107,7 +110,7 @@ const Machines = () => {
                 onDelete={handleDelete}
               />
             )}
-          </Card>
+          </div>
 
           <Modal
             isOpen={isModalOpen}
